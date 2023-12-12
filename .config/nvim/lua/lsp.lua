@@ -27,7 +27,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '.rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '.qf', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>Neoformat <CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '.f', '<cmd>Neoformat <CR>', opts)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -45,5 +45,4 @@ require('lspconfig').pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
-
 

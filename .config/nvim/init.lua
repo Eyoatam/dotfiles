@@ -2,6 +2,8 @@ require('plugins')
 require('lsp')
 require('nvimcmp')
 
+vim.g.mapleader = ','
+
 -- treesitter
 require('nvim-treesitter.configs').setup {
 	highlight = {
@@ -17,7 +19,12 @@ local telescope = require('telescope')
 telescope.setup {
     pickers = {
         find_files = {
-            hidden = true
+            hidden = true,
+        }
+    },
+    defaults = {
+        file_ignore_patterns = {
+            ".git"
         }
     }
 }
@@ -65,7 +72,6 @@ require('nvim-autopairs').setup {}
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
-vim.g.mapleader = ','
 vim.opt.guicursor = ''
 vim.opt.termguicolors = true
 vim.cmd('set number')
