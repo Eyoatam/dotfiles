@@ -9,6 +9,12 @@ vim.api.nvim_set_keymap('n', ',q', '<cmd>lua vim.diagnostic.setloclist()<CR>', o
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+    -- formatting
+    if client.supports_method "textDocument/formatting" then
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>lua vim.lsp.buf.format{async=true}<CR>', opts)
+    else
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat <CR>', opts)
+    end	
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -27,7 +33,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '.rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '.qf', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '.f', '<cmd>Neoformat <CR>', opts)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -43,6 +48,14 @@ require('lspconfig').gopls.setup {
 
 require('lspconfig').pyright.setup {
     on_attach = on_attach,
+    capabilities = capabilities
+}
+
+require('lspconfig').clangd.setup{
+    on_attach = on_attach,
+    settings = {
+        clangd = {},
+    },
     capabilities = capabilities
 }
 

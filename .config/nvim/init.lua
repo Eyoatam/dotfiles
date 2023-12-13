@@ -28,7 +28,7 @@ telescope.setup {
         }
     }
 }
-vim.keymap.set('n', '<leader>pf', builtin.find_files, opts) 
+vim.keymap.set('n', '<leader>ff', builtin.find_files, opts) 
 vim.keymap.set('n', '<leader>fg', builtin.live_grep,  opts)
 vim.keymap.set('n', '<leader>fb', builtin.buffers,  opts)
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
@@ -67,13 +67,9 @@ require('lualine').setup{
     },
 }
 
-require('nvim-autopairs').setup {}
-
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.opt.guicursor = ''
 vim.opt.termguicolors = true
 vim.cmd('set number')
-
-
