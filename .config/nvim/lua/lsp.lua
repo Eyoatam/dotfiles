@@ -51,11 +51,13 @@ require('lspconfig').pyright.setup {
     capabilities = capabilities
 }
 
-require('lspconfig').clangd.setup{
+require('lspconfig').tsserver.setup {
     on_attach = on_attach,
-    settings = {
-        clangd = {},
-    },
     capabilities = capabilities
+}
+
+require('lspconfig').clangd.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
 }
 
