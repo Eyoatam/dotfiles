@@ -12,8 +12,8 @@ local on_attach = function(client, bufnr)
     -- formatting
     if client.supports_method "textDocument/formatting" then
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>lua vim.lsp.buf.format{async=true}<CR>', opts)
-    else
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat <CR>', opts)
+    elseif client.name == "pyright" then
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat black<CR>', opts)
     end	
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

@@ -67,6 +67,12 @@ require('lualine').setup{
     },
 }
 
+-- autopairs
+require('nvim-autopairs').setup {}
+require("ibl").setup {
+    --indent = { char = '|' }
+}
+
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true

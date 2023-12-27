@@ -21,4 +21,5 @@ require("packer").startup(function()
     }
     use 'windwp/nvim-autopairs'
     use 'preservim/vimux'
+    use 'lukas-reineke/indent-blankline.nvim'
 end)
