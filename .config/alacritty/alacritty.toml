@@ -38,7 +38,8 @@ TERM = "alacritty"
 size = 12
 
 [font.normal]
-family = "Menlo"
+family = "Roboto Mono"
+style = "Medium"
 
 [scrolling]
 history = 100000
@@ -46,3 +47,9 @@ history = 100000
 [window]
 dynamic_title = true
 title = "Terminal"
+
+# [cursor.style]
+# blinking = "Always"
+
+# [cursor]
+# blink_interval = 500

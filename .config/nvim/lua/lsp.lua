@@ -12,11 +12,13 @@ local on_attach = function(client, bufnr)
     -- formatting
     if client.supports_method "textDocument/formatting" then
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>lua vim.lsp.buf.format{async=true}<CR>', opts)
-    elseif client.name == "pyright" then
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat black<CR>', opts)
-    elseif client.name == "clangd" then
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat clangformat<CR>', opts)
-    end	
+    end
+    -- if client.name == "pyright" then
+    --     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat black<CR>', opts)
+    -- end
+    -- elseif client.name == "clangd" then
+    --     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat clangformat<CR>', opts)
+    -- end	
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

@@ -33,7 +33,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep,  opts)
 vim.keymap.set('n', '<leader>fb', builtin.buffers,  opts)
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
 
--- gruvbox
+------ gruvbox
 require('gruvbox').setup({
     terminal_colors = true,
     undercurl = true,
@@ -49,8 +49,9 @@ require('gruvbox').setup({
        -- bright_green = "#73a94d",
    -- },
 })
+
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+ vim.cmd([[colorscheme gruvbox]])
 
 -- lualine
 require('lualine').setup{
@@ -69,13 +70,13 @@ require('lualine').setup{
 
 -- autopairs
 require('nvim-autopairs').setup {}
-require("ibl").setup {
-    --indent = { char = '|' }
-}
+-- require('ibl').setup {
+--     indent = {char='.'}
+-- }
 
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
-vim.opt.guicursor = ''
+
 vim.opt.termguicolors = true
 vim.cmd('set number')
