@@ -10,9 +10,11 @@ vim.api.nvim_set_keymap('n', ',q', '<cmd>lua vim.diagnostic.setloclist()<CR>', o
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
     -- formatting
-    if client.supports_method "textDocument/formatting" then
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>lua vim.lsp.buf.format{async=true}<CR>', opts)
-    end
+    -- if client.supports_method "textDocument/formatting" then
+    --     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>lua vim.lsp.buf.format{async=true}<CR>', opts)
+    -- else 
+    --     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat<CR>', opts)
+    -- end
     -- if client.name == "pyright" then
     --     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat black<CR>', opts)
     -- end
@@ -24,6 +26,7 @@ local on_attach = function(client, bufnr)
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>Neoformat<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
