@@ -24,7 +24,7 @@ telescope.setup {
     },
     defaults = {
         file_ignore_patterns = {
-            '.git/', 'node_modules/'
+            ".git/", "node_modules/", ".venv/", "__pycache__/", ".cache", "bin/", "/Applications/Xcode.app/", 
         }
     }
 }
@@ -32,6 +32,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
 vim.keymap.set('n', '<leader>fg', builtin.live_grep,  opts)
 vim.keymap.set('n', '<leader>fb', builtin.buffers,  opts)
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
+vim.keymap.set('n', '<leader>fs', builtin.lsp_workspace_symbols, opts)
 
 ------ gruvbox
 require('gruvbox').setup({
@@ -44,14 +45,17 @@ require('gruvbox').setup({
         comments = false,
         operators = false,
     },
-   contrast = 'hard',
+   contrast = "dark",
     --palette_overrides = {
        -- bright_green = "#73a94d",
    -- },
 })
 
+
 vim.o.background = "dark"
- vim.cmd([[colorscheme gruvbox]])
+vim.cmd.colorscheme("gruvbox")
+
+vim.api.nvim_set_hl(0, "Todo", { fg = "#ffffff", bg = "#000000", underline = true, bold = true })
 
 -- lualine
 require('lualine').setup{
@@ -67,6 +71,22 @@ require('lualine').setup{
         lualine_z = {'location'}
     },
 }
+
+
+-- comments
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "c",
+  callback = function()
+    vim.opt_local.commentstring = "// %s"
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.opt_local.commentstring = "// %s"
+  end,
+})
 
 -- autopairs
 require('nvim-autopairs').setup {}

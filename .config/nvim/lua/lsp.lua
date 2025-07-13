@@ -9,7 +9,11 @@ vim.api.nvim_set_keymap('n', ',q', '<cmd>lua vim.diagnostic.setloclist()<CR>', o
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-    -- formatting
+    -- commenting
+    -- if client.name == "clangd" then
+    --     vim.cmd("set commentstring=//%s")
+    -- end
+    -- -- formatting
     -- if client.supports_method "textDocument/formatting" then
     --     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>lua vim.lsp.buf.format{async=true}<CR>', opts)
     -- else 
@@ -58,13 +62,13 @@ require('lspconfig').pyright.setup {
     capabilities = capabilities
 }
 
-require('lspconfig').tsserver.setup {
+require('lspconfig').ts_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
 
 require('lspconfig').clangd.setup {
-    on_attach = on_attach,
+    on_attach = on_attach,   
     capabilities = capabilities,
 }
 

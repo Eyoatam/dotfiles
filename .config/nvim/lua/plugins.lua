@@ -1,7 +1,6 @@
 require("packer").startup(function()
     use 'wbthomason/packer.nvim'
     use "ellisonleao/gruvbox.nvim"
-    use 'tpope/vim-commentary'
     use 'nvim-treesitter/nvim-treesitter'
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-cmp'
